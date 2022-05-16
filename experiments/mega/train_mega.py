@@ -1,4 +1,11 @@
 # 1. Imports
+import sys
+
+sys.path  =  ['', '/data0/svc4/code/Deep-Reinforcement-Learning-Package/softgymenvs/PyFlex/bindings/build', '/opt/ros/kinetic/lib/python2.7/dist-packages', '/data0/svc4/code/Visual-Manipulation-Relationship-Network-Pytorch/caffe/python', '/data0/svc4/code/mrl', '/data0/svc4/anaconda3/envs/softgym/lib/python36.zip', '/data0/svc4/anaconda3/envs/softgym/lib/python3.6', '/data0/svc4/anaconda3/envs/softgym/lib/python3.6/lib-dynload', '/data0/svc4/.local/lib/python3.6/site-packages', '/data0/svc4/.local/lib/python3.6/site-packages/ravens-0.1-py3.6.egg', '/data0/svc4/anaconda3/envs/softgym/lib/python3.6/site-packages']
+sys.path.append("/data0/svc4/code/Deep-Reinforcement-Learning-Package/softgymenvs")
+sys.path.append("/data0/svc4/code/mrl")
+sys.path.append("/data0/svc4/code/mrl/myenvs")
+
 from mrl.import_all import *
 from mrl.modules.train import debug_vectorized_experience
 from experiments.mega.make_env import make_env
@@ -7,6 +14,10 @@ import os
 import gym
 import numpy as np
 import torch.nn as nn
+
+from softgym.registered_env import env_arg_dict, SOFTGYM_ENVS
+from softgym.utils.normalized_env import normalize
+from softgym.utils.visualization import save_numpy_as_gif
 
 # 2. Get default config and update any defaults (this automatically updates the argparse defaults)
 config = protoge_config()

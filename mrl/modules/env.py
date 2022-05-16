@@ -37,11 +37,11 @@ class EnvModule(mrl.Module):
       seed = int(time.time())
 
     if isinstance(env, str):
-      sample_env = make_env_by_id(env, seed, 0, episode_life)()
+      # sample_env = make_env_by_id(env, seed, 0, episode_life)()
       env_list = [make_env_by_id(env, seed, i, episode_life) for i in range(num_envs)]
     else:
-      sample_env = make_env(env, seed, 0)()
-      assert isinstance(sample_env, gym.core.Env), "Only gym environments supported for now!"
+      # sample_env = make_env(env, seed, 0)()
+      # assert isinstance(sample_env, gym.core.Env), "Only gym environments supported for now!"
       env_list = [make_env(env, seed, i) for i in range(num_envs)]
 
     if num_envs == 1:

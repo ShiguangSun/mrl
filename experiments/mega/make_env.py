@@ -1,5 +1,5 @@
 import gym, numpy as np
-
+import myenvs
 from envs.customfetch.custom_fetch import PushEnv, SlideEnv, PickPlaceEnv, GoalType, StackEnv, PushLeft, PushRight, SlideNEnv
 from envs.customfetch.custom_hand import HandBlockEnv, HandPenEnv, HandEggEnv, HandReachFullEnv
 from envs.customfetch.epsilon_wrapper import EpsilonWrapper
@@ -23,6 +23,11 @@ def make_env(args):
   if gym.envs.registry.env_specs.get(args.env) is not None:
     env_fn = lambda: gym.make(args.env)
     eval_env_fn = env_fn
+
+  elif myenvs.registry.env_specs.get(args.env) is not None:  
+    env_fn = lambda :myenvs.make(args.env)
+    eval_env_fn =env_fn
+
   elif 'pointmaze' in args.env.lower():
     env_fn = lambda: PointMaze2D()
     eval_env_fn = lambda: PointMaze2D(test=True)

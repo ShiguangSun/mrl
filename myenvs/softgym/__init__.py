@@ -1,0 +1,9 @@
+# from .rope_configuration import RopeConfigurationEnv
+from .cloth_fold_sparse import ClothFoldSparseEnv
+from .cloth_drop_sparse import ClothDropSparseEnv
+from .cloth_fold_drop_sparse import ClothFoldDropSparseEnv
+from .cloth_fold_crumpled_sparse import ClothFoldCrumpledSparseEnv
+from .rope_configuration_sparse import RopeConfigurationSparseEnv
+from .rope_alphabet_sparse import RopeAlphabetSparseEnv
+from .pass_water_sparse import PassWaterSparseEnv
+from .pour_water_amount_sparse import PourWaterAmountPosControlSparseEnv

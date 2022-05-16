@@ -5,7 +5,7 @@ import numpy as np
 from mrl.utils.vec_env import VecEnv, CloudpickleWrapper
 from gym import spaces
 
-
+import time
 def _worker(remote, parent_remote, env_fn_wrapper):
   parent_remote.close()
   env = env_fn_wrapper.var()
@@ -64,8 +64,17 @@ class SubprocVecEnv(VecEnv):
       remote.close()
 
     self.remotes[0].send(('get_spaces', None))
-    observation_space, action_space = self.remotes[0].recv()
 
+    # print(self.remotes[0].send(('get_spaces', None)))
+    print('*'*20)
+    for i, process in enumerate(self.processes):
+      print(i, process.is_alive())
+    print('*'*20)
+    # print(self.remotes[0])
+    # print(self.remotes[0].recv())
+    # print(self.remotes[0])
+
+    observation_space, action_space = self.remotes[0].recv()
     self.goal_env = False
     self.goal_keys = None
     if isinstance(observation_space, spaces.Dict):
